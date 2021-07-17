@@ -10,6 +10,7 @@ import { TodoTasksComponent } from '../todo-app/todo-tasks/todo-tasks.component'
 import { TasksApiService } from '../todo-app/tasks-api.service';
 import { TasksListComponent } from '../todo-app/tasks-list/tasks-list.component';
 import { TasksStateComponent } from '../todo-app/tasks-state.component';
+import { TasksComponent } from '../todo-app/tasks/tasks.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
@@ -19,7 +20,8 @@ import { TasksStateComponent } from '../todo-app/tasks-state.component';
     AddTasksComponent,
     CompletedTasksComponent,
     TodoTasksComponent,
-    TasksListComponent
+    TasksListComponent,
+    TasksComponent
   ],
   providers: [TasksStateComponent, TasksApiService],
   bootstrap: [AppComponent]
