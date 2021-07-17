@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tasks-list',
@@ -6,13 +6,11 @@ import { Component, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./tasks-list.component.css']
 })
 export class TasksListComponent implements OnInit {
-  @Output() onDelete;
-  @Output() onEdit;
+  @Output() onDelete = new EventEmitter<string>();
+  @Output() onEdit = new EventEmitter<string>();
   @Input() list: any;
   @Input() title: string;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

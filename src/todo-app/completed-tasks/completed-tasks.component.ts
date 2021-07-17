@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-completed-tasks',
@@ -6,19 +6,14 @@ import { Component, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./completed-tasks.component.css']
 })
 export class CompletedTasksComponent implements OnInit {
-  @Output() onDelete;
-  @Output() onEdit;
+  @Output() onDelete = new EventEmitter<string>();
+  @Output() onEdit = new EventEmitter<string>();
   @Input() list;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  deleteTask() {
+  deleteTask() {}
 
-  }
-
-  editTask() {
-    
-  }
+  editTask() {}
 }

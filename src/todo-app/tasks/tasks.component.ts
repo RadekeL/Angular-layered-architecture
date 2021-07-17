@@ -9,4 +9,14 @@ export class TasksComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  addTask() {}
+
+  editTask() {}
+
+  loadTasks() {}
+
+  completeTask() {}
+
+  todoTask() {}
 }
