@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-completed-tasks',
@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./completed-tasks.component.css']
 })
 export class CompletedTasksComponent implements OnInit {
-
+  @Output() onDelete;
+  @Output() onEdit;
+  @Input() list;
   constructor() { }
 
   ngOnInit() {
