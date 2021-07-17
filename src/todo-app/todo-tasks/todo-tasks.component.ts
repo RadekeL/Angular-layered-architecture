@@ -12,4 +12,8 @@ export class TodoTasksComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  deleteTask() {}
+
+  editTask() {}
 }

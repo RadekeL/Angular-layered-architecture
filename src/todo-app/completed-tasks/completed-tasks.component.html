@@ -1,4 +1,4 @@
-<app-tasks-list title="COMPLETED" [list]="null">
+<app-tasks-list (onDelete)="deleteTask()" (onEdit)="editTask()" title="COMPLETED" [list]="null">
   <li class="list-group-item">
     <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
 First checkbox

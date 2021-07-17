@@ -14,4 +14,11 @@ export class CompletedTasksComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteTask() {
+
+  }
+
+  editTask() {
+    
+  }
 }
