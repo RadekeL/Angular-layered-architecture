@@ -9,6 +9,7 @@ export class TasksListComponent implements OnInit {
   @Output() onDelete;
   @Output() onEdit;
   @Input() list: any;
+  @Input() title: string;
   constructor() { }
 
   ngOnInit() {
