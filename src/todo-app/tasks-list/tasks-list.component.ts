@@ -11,7 +11,6 @@ import { Task } from '../../interfaces/task.interface';
 export class TasksListComponent implements OnInit {
   @Output() onDelete = new EventEmitter<string>();
   @Output() onEdit = new EventEmitter<string>();
-  @Input() list: Observable<Task[]>;
   @Input() title: string;
   constructor() {}
 

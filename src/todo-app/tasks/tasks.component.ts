@@ -9,13 +9,15 @@ import { Task } from '../../interfaces/task.interface';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  // list$: Observable<Task[]>;
+  tasks$ = this.facade.tasks$;
 
   constructor(private readonly facade: TasksFacade) {}
 
   ngOnInit() {
     console.log('facade');
     this.facade.loadTasks();
+
+    this.tasks$.subscribe(v => console.log('TEST', v));
   }
 
   addTask() {}

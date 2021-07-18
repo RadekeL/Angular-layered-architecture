@@ -1,17 +1,25 @@
 import { Injectable } from '@angular/core';
 import { TasksApiService } from './tasks-api.service';
+import { TasksStateComponent } from './tasks-state.component';
 
 @Injectable()
 export class TasksFacade {
-  constructor(private readonly taskService: TasksApiService) {}
+  tasks$ = this.taskState.tasks$;
+
+  constructor(
+    private readonly taskService: TasksApiService,
+    private readonly taskState: TasksStateComponent
+    ) {}
 
   addTask() {}
 
   editTask() {}
 
   loadTasks() {
-    console.log('LOAD');
-    this.taskService.getTasks().subscribe(v => console.log(v[1]));
+    this.taskService.getTasks().subscribe(tasks => {
+      this.taskState.setTasks(tasks);
+    });
+    
   }
 
   completeTask() {}

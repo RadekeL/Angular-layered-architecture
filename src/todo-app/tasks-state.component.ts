@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject,  mergeMap, pluck } from 'rxjs';
 import { Task } from '../interfaces/task.interface';
 
 type TasksState = {
@@ -14,6 +14,8 @@ export class TasksStateComponent implements OnInit {
 
   private _state$ = new BehaviorSubject<TasksState>(this.initState);
 
+  private _stateAsObservable = this._state$.asObservable();
+
   constructor() {}
 
   ngOnInit() {}
@@ -25,7 +27,13 @@ export class TasksStateComponent implements OnInit {
 
   // * Selectors
 
-  // public get tasks$() {
-  //   return
+  public get tasks$() {
+    return this._stateAsObservable.pipe(pluck('tasks'));
+  }
+
+  // public get completedTasks$() {
+  //   return this.tasks$.pipe(
+  //     mergeMap(tasks => tasks),
+  //   )
   // }
 }

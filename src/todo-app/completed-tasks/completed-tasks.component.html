@@ -1,7 +1,7 @@
-<app-tasks-list (onDelete)="deleteTask()" (onEdit)="editTask()" title="COMPLETED" [list]="null">
-  <li class="list-group-item">
+<app-tasks-list (onDelete)="deleteTask()" (onEdit)="editTask()" title="COMPLETED">
+  <li class="list-group-item" *ngFor="let task of tasks$ | async">
     <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-First checkbox
+    {{task.title}}
     <button type="button" class="btn btn-dark">-</button>
     <button type="button" class="btn btn-dark">EDIT</button>
 

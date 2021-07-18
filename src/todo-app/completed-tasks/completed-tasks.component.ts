@@ -10,7 +10,7 @@ import { Task } from '../../interfaces/task.interface';
 export class CompletedTasksComponent implements OnInit {
   @Output() onDelete = new EventEmitter<string>();
   @Output() onEdit = new EventEmitter<string>();
-  @Input() list: Observable<Task[]>;
+  @Input() tasks$: Observable<Task[]>;
   constructor() {}
 
   ngOnInit() {}
