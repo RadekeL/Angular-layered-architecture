@@ -11,7 +11,7 @@ export class TasksFacade {
 
   loadTasks() {
     console.log('LOAD');
-    // this.taskService.getTasks().subscribe(v => console.log(v));
+    this.taskService.getTasks().subscribe(v => console.log(v[1]));
   }
 
   completeTask() {}
