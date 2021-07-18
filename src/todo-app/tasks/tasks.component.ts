@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { TasksFacade } from '../tasks-facade';
+import { Task } from '../../interfaces/task.interface';
 
 @Component({
   selector: 'app-tasks',
@@ -6,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  constructor() {}
+  list$: Observable<Task[]>;
 
-  ngOnInit() {}
+  constructor(private readonly facade: TasksFacade) {}
+
+  ngOnInit() {
+    this.facade.loadTasks();
+  }
 
   addTask() {}
 

@@ -11,6 +11,7 @@ import { TasksApiService } from '../todo-app/tasks-api.service';
 import { TasksListComponent } from '../todo-app/tasks-list/tasks-list.component';
 import { TasksStateComponent } from '../todo-app/tasks-state.component';
 import { TasksComponent } from '../todo-app/tasks/tasks.component';
+import { TasksFacade } from '../todo-app/tasks-facade';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
@@ -23,7 +24,7 @@ import { TasksComponent } from '../todo-app/tasks/tasks.component';
     TasksListComponent,
     TasksComponent
   ],
-  providers: [TasksStateComponent, TasksApiService],
+  providers: [TasksStateComponent, TasksApiService, TasksFacade],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

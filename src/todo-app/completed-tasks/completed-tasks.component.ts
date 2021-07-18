@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Task } from '../../interfaces/task.interface';
 
 @Component({
   selector: 'app-completed-tasks',
@@ -8,7 +10,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class CompletedTasksComponent implements OnInit {
   @Output() onDelete = new EventEmitter<string>();
   @Output() onEdit = new EventEmitter<string>();
-  @Input() list;
+  @Input() list: Observable<Task[]>;
   constructor() {}
 
   ngOnInit() {}
