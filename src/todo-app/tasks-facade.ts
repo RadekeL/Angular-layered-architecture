@@ -1,16 +1,17 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
+import { TasksApiService } from './tasks-api.service';
 
 @Injectable()
 export class TasksFacade {
-  
-  constructor() {}
+  constructor(private readonly taskService: TasksApiService) {}
 
   addTask() {}
 
   editTask() {}
 
   loadTasks() {
-    console.log('TASK LOADED')
+    console.log('LOAD');
+    // this.taskService.getTasks().subscribe(v => console.log(v));
   }
 
   completeTask() {}

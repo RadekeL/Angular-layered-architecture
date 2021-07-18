@@ -9,11 +9,12 @@ import { Task } from '../../interfaces/task.interface';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  list$: Observable<Task[]>;
+  // list$: Observable<Task[]>;
 
   constructor(private readonly facade: TasksFacade) {}
 
   ngOnInit() {
+    console.log('facade');
     this.facade.loadTasks();
   }
 

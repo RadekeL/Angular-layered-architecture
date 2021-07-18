@@ -12,9 +12,10 @@ import { TasksListComponent } from '../todo-app/tasks-list/tasks-list.component'
 import { TasksStateComponent } from '../todo-app/tasks-state.component';
 import { TasksComponent } from '../todo-app/tasks/tasks.component';
 import { TasksFacade } from '../todo-app/tasks-facade';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
   declarations: [
     AppComponent,
     HelloComponent,
