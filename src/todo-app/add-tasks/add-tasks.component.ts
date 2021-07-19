@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-tasks',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-tasks.component.css']
 })
 export class AddTasksComponent implements OnInit {
+  @Output() onTaskAdded = new EventEmitter<string>();
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  onSubmit(form: NgForm) {
+    this.onTaskAdded.emit(form.value);
+    form.reset();
   }
-
 }

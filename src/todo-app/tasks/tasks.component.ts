@@ -18,7 +18,10 @@ export class TasksComponent implements OnInit {
     this.facade.loadTasks();
   }
 
-  addTask() {}
+  addTask(task: string) {
+    console.log(task);
+    // this.facade.addTask(task)
+  }
 
   editTask() {}
 
