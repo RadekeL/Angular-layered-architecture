@@ -4,12 +4,13 @@ import { TasksStateComponent } from './tasks-state.component';
 
 @Injectable()
 export class TasksFacade {
-  tasks$ = this.taskState.tasks$;
+  completedTasks$ = this.taskState.completedTasks$;
+  todoTasks$ = this.taskState.todoTasks$;
 
   constructor(
     private readonly taskService: TasksApiService,
     private readonly taskState: TasksStateComponent
-    ) {}
+  ) {}
 
   addTask() {}
 
@@ -19,7 +20,6 @@ export class TasksFacade {
     this.taskService.getTasks().subscribe(tasks => {
       this.taskState.setTasks(tasks);
     });
-    
   }
 
   completeTask() {}
