@@ -25,4 +25,8 @@ export class TasksFacade {
   completeTask() {}
 
   todoTask() {}
+
+  deleteTask(taskId: number) {
+    this.taskState.deleteTask(taskId);
+  }
 }

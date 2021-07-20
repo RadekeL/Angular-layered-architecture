@@ -8,14 +8,15 @@ import { Task } from '../../interfaces/task.interface';
   styleUrls: ['./completed-tasks.component.css']
 })
 export class CompletedTasksComponent implements OnInit {
-  @Output() onDelete = new EventEmitter<string>();
+  @Output() onDelete = new EventEmitter<number>();
   @Output() onEdit = new EventEmitter<string>();
   @Input() tasks$: Observable<Task[]>;
   constructor() {}
 
   ngOnInit() {}
 
-  deleteTask() {}
-
+  deleteTask(task: Task) {
+    this.onDelete.emit(task.id);
+  }
   editTask() {}
 }

@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, mergeMap, pluck } from 'rxjs';
-import { filter, map, tap, toArray } from 'rxjs/operators';
+import { filter, first, map, tap, toArray } from 'rxjs/operators';
 import { Task } from '../interfaces/task.interface';
 
 type TasksState = {
@@ -24,6 +24,17 @@ export class TasksStateComponent implements OnInit {
   // * Actions
   public setTasks(tasks: Task[]) {
     this._state$.next({ ...this._state$.value, tasks });
+  }
+
+  // TODO - użyj gotowego selectora
+  public deleteTask(taskId: number) {
+    return this._stateAsObservable$
+      .pipe(
+        first(),
+        pluck('tasks'),
+        map((tasks: Task[]) => tasks.filter(task => task.id !== taskId))
+      )
+      .subscribe(tasks => this.setTasks(tasks));
   }
 
   // * Selectors

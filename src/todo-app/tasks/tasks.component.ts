@@ -30,4 +30,8 @@ export class TasksComponent implements OnInit {
   completeTask() {}
 
   todoTask() {}
+
+  deleteTask(taskId: number) {
+    this.facade.deleteTask(taskId);
+  }
 }
