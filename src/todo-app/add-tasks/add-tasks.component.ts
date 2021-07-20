@@ -13,7 +13,7 @@ export class AddTasksComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(form: NgForm) {
-    this.onTaskAdded.emit(form.value);
+    this.onTaskAdded.emit(form.value.title);
     form.reset();
   }
 }

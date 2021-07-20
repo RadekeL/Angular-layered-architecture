@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, mergeMap, pluck } from 'rxjs';
 import { filter, first, map, tap, toArray } from 'rxjs/operators';
+import { USER_ID } from '../consts';
 import { Task } from '../interfaces/task.interface';
 
 type TasksState = {
@@ -28,19 +29,25 @@ export class TasksStateComponent implements OnInit {
 
   // TODO - użyj gotowego selectora
   public deleteTask(taskId: number) {
-    return this._stateAsObservable$
+    return this.tasks$
       .pipe(
         first(),
-        pluck('tasks'),
         map((tasks: Task[]) => tasks.filter(task => task.id !== taskId))
       )
       .subscribe(tasks => this.setTasks(tasks));
   }
 
-  // * Selectors
+  // public addTask(task: Task) {
+  //   this._state$.
+  // }
+
+  // ** Selectors
 
   public get tasks$() {
-    return this._stateAsObservable$.pipe(pluck('tasks'));
+    return this._stateAsObservable$.pipe(
+      pluck('tasks'),
+      map((tasks: Task[]) => tasks.filter(task => task.userId === USER_ID))
+    );
   }
 
   public get todoTasks$() {
@@ -52,6 +59,16 @@ export class TasksStateComponent implements OnInit {
   public get completedTasks$() {
     return this.tasks$.pipe(
       map((tasks: Task[]) => tasks.filter(task => !!task.completed))
+    );
+  }
+
+  public get lastIdTask$() {
+    return this.tasks$.pipe(
+      first(),
+      map((tasks: Task[]) => {
+        const last = tasks.length - 1;
+        return tasks[last].id;
+      })
     );
   }
 }

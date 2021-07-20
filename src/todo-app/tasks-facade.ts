@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { map, tap } from 'rxjs/operators';
+import { USER_ID } from '../consts';
+import { Task } from '../interfaces/task.interface';
 import { TasksApiService } from './tasks-api.service';
 import { TasksStateComponent } from './tasks-state.component';
 
@@ -12,7 +15,22 @@ export class TasksFacade {
     private readonly taskState: TasksStateComponent
   ) {}
 
-  addTask() {}
+  addTask(taskTitle: string) {
+    // console.log(taskTitle);
+    this.taskDataGenerator(taskTitle);
+  }
+  private taskDataGenerator(taskTitle: string) {
+    this.taskState.lastIdTask$
+      .pipe(
+        map((lastTaskId: number) => ({
+          userId: USER_ID,
+          id: lastTaskId + 1,
+          title: taskTitle,
+          completed: false
+        }))
+      )
+      .subscribe(data => console.log(data));
+  }
 
   editTask() {}
 
