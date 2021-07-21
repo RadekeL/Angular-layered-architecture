@@ -19,6 +19,7 @@ export class TasksFacade {
     // console.log(taskTitle);
     this.taskDataGenerator(taskTitle);
   }
+  // TODO make factory
   private taskDataGenerator(taskTitle: string) {
     this.taskState.lastIdTask$
       .pipe(
@@ -29,7 +30,7 @@ export class TasksFacade {
           completed: false
         }))
       )
-      .subscribe(data => console.log(data));
+      .subscribe((task: Task) => this.taskState.addTask(task));
   }
 
   editTask() {}

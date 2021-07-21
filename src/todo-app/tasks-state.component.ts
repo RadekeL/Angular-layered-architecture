@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, mergeMap, pluck } from 'rxjs';
+import { Observable } from 'rxjs';
 import { filter, first, map, tap, toArray } from 'rxjs/operators';
 import { USER_ID } from '../consts';
 import { Task } from '../interfaces/task.interface';
@@ -37,13 +38,17 @@ export class TasksStateComponent implements OnInit {
       .subscribe(tasks => this.setTasks(tasks));
   }
 
-  // public addTask(task: Task) {
-  //   this._state$.
-  // }
+  public addTask(task: Task) {
+    this.tasks$.pipe(
+      first()
+    )
+    .subscribe((tasks: Task[]) => this.setTasks([...tasks, task]));
+  }
+
 
   // ** Selectors
 
-  public get tasks$() {
+  public get tasks$(): Observable<Task[]> {
     return this._stateAsObservable$.pipe(
       pluck('tasks'),
       map((tasks: Task[]) => tasks.filter(task => task.userId === USER_ID))
